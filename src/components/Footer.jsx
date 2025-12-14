@@ -9,7 +9,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/zee-zee-596aa1363/", icon: <FaLinkedin size={22} /> },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/soth-l-674090284/", icon: <FaLinkedin size={22} /> },
     { name: "GitHub", url: "https://github.com/sothlyheang", icon: <FaGithub size={22} /> },
     { name: "Facebook", url: "https://web.facebook.com/SothLy.Heang.9279/", icon: <FaFacebook size={22} /> },
   ];
