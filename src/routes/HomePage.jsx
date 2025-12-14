@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-import banner1 from "../assets/banner1.1.jpg";
+import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner1.2.webp";
-import banner3 from "../assets/banner1.3.webp";
+import banner3 from "../assets/banner3.jpg";
 import banner4 from "../assets/banner4.jpg";
 
 import ProductCard from "../components/ProductCard";
