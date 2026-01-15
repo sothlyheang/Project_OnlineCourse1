@@ -54,7 +54,7 @@ const HomePage = () => {
             <img
               key={i}
               src={src}
-              className="w-full h-[400px] sm:h-[500px] md:h-[620px] object-cover shrink-0"
+              className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[620px] object-cover shrink-0"
               alt={`Slide ${i + 1}`}
             />
           ))}
@@ -66,17 +66,17 @@ const HomePage = () => {
         {/* HERO OVERLAY */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4 sm:px-6 max-w-3xl">
           <div className="bg-black/85 p-6 sm:p-8 rounded-xl">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-lg">
               Upgrade Your Skills Today
             </h1>
-            <p className="text-base sm:text-lg md:text-xl mt-3 sm:mt-4 text-white opacity-90">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-2 sm:mt-3 text-white opacity-90">
               Join thousands of learners mastering new tech skills with high-quality online courses.
             </p>
 
-            <div className="mt-4 sm:mt-6">
+            <div className="mt-3 sm:mt-4">
               <Link
                 to="/courses"
-                className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
+                className="bg-yellow-400 text-gray-900 px-5 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-lg font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
               >
                 Browse Courses →
               </Link>
@@ -106,26 +106,26 @@ const HomePage = () => {
       <Carousel />
 
       {/* FEATURED COURSES */}
-      <section ref={featuredRef} className="container mx-auto px-4 sm:px-6 mt-6 animate-fadeUp">
+      <section ref={featuredRef} className="container mx-auto px-4 sm:px-6 mt-6">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-slate-800">
           Featured Courses
         </h2>
         <hr className="pb-4" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {products.slice(0, 8).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+        {products.slice(0, 8).map((product) => (
+        <ProductCard key={product.id} product={product} />
+        ))}
         </div>
       </section>
 
       {/* POPULAR CATEGORIES */}
-      <section className="container mx-auto px-4 sm:px-6 mt-12 animate-fadeUp">
+      <section className="container mx-auto px-4 sm:px-6 mt-10">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-slate-800">
           Popular Categories
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {categoryIcons.map(({ name, icon }, i) => (
             <Link
               key={i}
@@ -140,12 +140,12 @@ const HomePage = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="container mx-auto px-4 sm:px-6 mt-12 mb-12 animate-fadeUp">
+      <section className="container mx-auto px-4 sm:px-6 mt-10 mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-slate-800">
           Why Choose Us?
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center">
           <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="text-xl font-bold mb-2">Top-Rated Content</h3>
             <p className="text-gray-600">Expert instructors & industry-ready curriculum.</p>
