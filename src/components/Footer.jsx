@@ -36,7 +36,7 @@ const Footer = () => {
         <hr className="w-28 mx-auto border-gray-700 mb-4" />
 
         <p className="text-sm text-gray-500">
-          © {currentYear} Made by <span className="text-white font-semibold">SOTH LYHEANG & HENG SOPHAPOR </span>. All rights reserved.
+          © {currentYear} Made by <span className="text-white font-semibold">SOTH LYHEANG</span>. All rights reserved.
           <br />
           Designed and built with <span className="text-white">React</span> & <span className="text-white">Tailwind CSS</span>.
         </p>
