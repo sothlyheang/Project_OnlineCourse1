@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="border rounded-xl shadow-sm bg-white flex flex-col hover:shadow-lg transition h-full">
+    <div className="border rounded-xl shadow-sm bg-white flex flex-col hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out h-full animate-fadeIn">
       
       {/* Image & Title */}
       <Link to={`/courses/${product.id}`} className="cursor-pointer">
@@ -42,29 +42,27 @@ const ProductCard = ({ product }) => {
           className="w-full h-32 sm:h-40 object-cover rounded-t-xl"
         />
 
-        <h2 className="font-bold text-sm sm:text-base mt-2 px-3 line-clamp-2">
+        <h2 className="font-bold text-sm sm:text-base mt-2 px-3 line-clamp-2 transition-colors duration-300 hover:text-blue-600">
           {product.title}
         </h2>
       </Link>
 
       <div className="px-3 flex-1 flex flex-col justify-between">
         {/* Price */}
-        <p className="mt-1 text-sm sm:text-base text-gray-600 font-medium">
+        <p className="mt-1 text-sm sm:text-base text-gray-600 font-medium transition-colors duration-300 hover:text-gray-800">
           ${product.price}
         </p>
 
         {/* ⭐ Rating */}
         <div className="flex items-center mt-1 text-xs sm:text-sm">
           {renderStars(product.rating)}
-          <span className="ml-1 text-gray-700 font-medium">
-            {product.rating}
-          </span>
+          <span className="ml-1 text-gray-700 font-medium">{product.rating}</span>
         </div>
 
         {/* Add to Cart */}
         <button
           onClick={addToCart}
-          className="mt-3 mb-3 bg-blue-600 text-white text-sm px-3 py-2 rounded-lg hover:bg-blue-700 flex items-center gap-2 justify-center"
+          className="mt-3 mb-3 bg-blue-600 text-white text-sm px-3 py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition-transform duration-200 flex items-center gap-2 justify-center"
         >
           <FaShoppingCart size={14} />
           Add to Cart

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import products from '../data/product';
 import searchIcon from '../assets/search.svg';
 import cartIcon from '../assets/cart.svg';
@@ -36,27 +36,36 @@ const Navbar = () => {
     }
   };
 
-  return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-900 text-white z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+  const linkClass = ({ isActive }) =>
+    `py-2 px-3 rounded-2xl transition-all duration-300 ${
+      isActive ? 'border-b-2 border-white text-white' : 'text-white hover:border-b-2 hover:border-blue-400 hover:text-blue-400'
+    }`;
+
+  return ( 
+    <nav className="fixed top-0 left-0 w-full h-26 bg-slate-900 text-white z-50 shadow-md">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-7 px-6 flex-wrap md:flex-nowrap gap-3">
+
         {/* Logo */}
-        <Link to="/" className="font-bold text-2xl pr-7">ETEC ONLINE COURSE</Link>
+        <NavLink to="/" className="font-bold text-2xl hover:scale-105 transition-transform duration-300">
+          ETEC ONLINE COURSE
+        </NavLink>
 
         {/* Hamburger for Mobile */}
         <button
-          className="md:hidden text-white text-2xl"
+          className="md:hidden text-white text-2xl hover:scale-110 transition-transform duration-200"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
         </button>
 
         {/* Search & Links (Desktop) */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-4 flex-wrap">
+
           {/* Search */}
           <div className="relative w-[500px]">
             <img className='absolute left-3 top-3 w-5' src={searchIcon} alt="Search" />
             <input
-              className='w-full h-[45px] rounded-3xl bg-white text-black pl-10 font-normal'
+              className='w-full h-[45px] rounded-3xl bg-white text-black pl-10 font-normal focus:ring-2 focus:ring-blue-400 transition-all duration-300'
               placeholder='Search courses...'
               type="text"
               value={searchTerm}
@@ -69,7 +78,7 @@ const Navbar = () => {
                   <li
                     key={course.id}
                     onClick={() => handleSuggestionClick(course.id)}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+                    className="px-4 py-2 hover:bg-gray-600 cursor-pointer transition-colors duration-200"
                   >
                     {course.title}
                   </li>
@@ -78,30 +87,33 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Links */}
-          <Link className='py-2 px-2 text-white hover:border-b-2 hover:bg-slate-700 rounded-2xl' to="/">Home</Link>
-          <Link className='py-2 px-2 text-white hover:border-b-2 hover:bg-slate-700 rounded-2xl' to="/courses">Courses</Link>
-          <Link className='py-2 px-2 text-white hover:border-b-2 hover:bg-slate-700 rounded-2xl' to="/category">Category</Link>
-          <Link className='py-2 px-2 text-white hover:border-b-2 hover:bg-slate-700 rounded-2xl' to="/about">About Us</Link>
-          <Link to="/cart" className="relative inline-block py-2 px-3">
+          {/* Nav Links */}
+          <NavLink to="/" className={linkClass}>Home</NavLink>
+          <NavLink to="/courses" className={linkClass}>Courses</NavLink>
+          <NavLink to="/category" className={linkClass}>Category</NavLink>
+          <NavLink to="/about" className={linkClass}>About Us</NavLink>
+
+          {/* Cart */}
+          <NavLink to="/cart" className="relative hover:scale-110 transition-transform duration-300">
             <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
                 {cart.length}
               </span>
             )}
-          </Link>
+          </NavLink>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-slate-900 px-6 pb-4 space-y-3 border-t border-slate-700">
+        <div className="md:hidden bg-slate-900 px-6 pb-4 space-y-3 border-t border-slate-700 animate-fadeDown">
+
           {/* Search */}
           <div className="relative">
             <img className='absolute left-3 top-3 w-5' src={searchIcon} alt="Search" />
             <input
-              className='w-full h-10 rounded-3xl bg-white text-black pl-10 font-normal'
+              className='w-full h-10 rounded-3xl bg-white text-black pl-10 font-normal focus:ring-2 focus:ring-blue-400 transition-all duration-300'
               placeholder='Search courses...'
               type="text"
               value={searchTerm}
@@ -114,7 +126,7 @@ const Navbar = () => {
                   <li
                     key={course.id}
                     onClick={() => handleSuggestionClick(course.id)}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
+                    className="px-4 py-2 hover:bg-gray-600 cursor-pointer transition-colors duration-200"
                   >
                     {course.title}
                   </li>
@@ -123,19 +135,20 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Links */}
-          <Link className='block py-2 px-2 text-white hover:bg-slate-700 rounded-2xl' to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link className='block py-2 px-2 text-white hover:bg-slate-700 rounded-2xl' to="/courses" onClick={() => setMenuOpen(false)}>Courses</Link>
-          <Link className='block py-2 px-2 text-white hover:bg-slate-700 rounded-2xl' to="/category" onClick={() => setMenuOpen(false)}>Category</Link>
-          <Link className='block py-2 px-2 text-white hover:bg-slate-700 rounded-2xl' to="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-          <Link to="/cart" className="relative block py-2 px-2" onClick={() => setMenuOpen(false)}>
+          {/* Mobile Links */}
+          <NavLink to="/" className={linkClass} onClick={() => setMenuOpen(false)}>Home</NavLink>
+          <NavLink to="/courses" className={linkClass} onClick={() => setMenuOpen(false)}>Courses</NavLink>
+          <NavLink to="/category" className={linkClass} onClick={() => setMenuOpen(false)}>Category</NavLink>
+          <NavLink to="/about" className={linkClass} onClick={() => setMenuOpen(false)}>About Us</NavLink>
+          <NavLink to="/cart" className="relative hover:scale-110 transition-transform duration-300" onClick={() => setMenuOpen(false)}>
             <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
             {cart.length > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
                 {cart.length}
               </span>
             )}
-          </Link>
+          </NavLink>
+
         </div>
       )}
     </nav>

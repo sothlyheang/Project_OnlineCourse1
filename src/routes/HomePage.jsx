@@ -25,7 +25,7 @@ const HomePage = () => {
   const Arrow = ({ direction = "left", onClick }) => (
     <button
       onClick={onClick}
-      className={`absolute top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full p-2 hover:bg-black/60 ${
+      className={`absolute top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full p-2 hover:bg-black/60 transition duration-300 ${
         direction === "left" ? "left-2 sm:left-5" : "right-2 sm:right-5"
       }`}
     >
@@ -51,7 +51,12 @@ const HomePage = () => {
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {images.map((src, i) => (
-            <img key={i} src={src} className="w-full h-[400px] sm:h-[500px] md:h-[620px] object-cover shrink-0" alt={`Slide ${i + 1}`} />
+            <img
+              key={i}
+              src={src}
+              className="w-full h-[400px] sm:h-[500px] md:h-[620px] object-cover shrink-0"
+              alt={`Slide ${i + 1}`}
+            />
           ))}
         </div>
 
@@ -71,7 +76,7 @@ const HomePage = () => {
             <div className="mt-4 sm:mt-6">
               <Link
                 to="/courses"
-                className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-bold shadow-lg hover:scale-105 transition"
+                className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
               >
                 Browse Courses →
               </Link>
@@ -101,7 +106,7 @@ const HomePage = () => {
       <Carousel />
 
       {/* FEATURED COURSES */}
-      <section ref={featuredRef} className="container mx-auto px-4 sm:px-6 mt-6">
+      <section ref={featuredRef} className="container mx-auto px-4 sm:px-6 mt-6 animate-fadeUp">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-slate-800">
           Featured Courses
         </h2>
@@ -115,7 +120,7 @@ const HomePage = () => {
       </section>
 
       {/* POPULAR CATEGORIES */}
-      <section className="container mx-auto px-4 sm:px-6 mt-12">
+      <section className="container mx-auto px-4 sm:px-6 mt-12 animate-fadeUp">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center text-slate-800">
           Popular Categories
         </h2>
@@ -125,7 +130,7 @@ const HomePage = () => {
             <Link
               key={i}
               to={`/courses?category=${name}`}
-              className="bg-white hover:bg-blue-50 border border-slate-200 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg transition-all text-center flex flex-col items-center"
+              className="bg-white hover:bg-blue-50 border border-slate-200 p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-lg hover:scale-105 transition-transform duration-300 text-center flex flex-col items-center"
             >
               <div className="text-blue-600 mb-2 sm:mb-3">{icon}</div>
               <p className="font-semibold text-slate-700">{name}</p>
@@ -135,23 +140,23 @@ const HomePage = () => {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="container mx-auto px-4 sm:px-6 mt-12 mb-12">
+      <section className="container mx-auto px-4 sm:px-6 mt-12 mb-12 animate-fadeUp">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-slate-800">
           Why Choose Us?
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 text-center">
-          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg transition">
+          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="text-xl font-bold mb-2">Top-Rated Content</h3>
             <p className="text-gray-600">Expert instructors & industry-ready curriculum.</p>
           </div>
 
-          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg transition">
+          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="text-xl font-bold mb-2">Career-Focused Skills</h3>
             <p className="text-gray-600">Build skills that employers look for.</p>
           </div>
 
-          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg transition">
+          <div className="p-4 sm:p-6 bg-white shadow rounded-xl hover:shadow-lg hover:scale-105 transition-transform duration-300">
             <h3 className="text-xl font-bold mb-2">Learn at Your Pace</h3>
             <p className="text-gray-600">Study anytime, anywhere with lifetime access.</p>
           </div>
