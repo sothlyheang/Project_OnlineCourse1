@@ -25,58 +25,60 @@ const Courses = () => {
   if (sortBy === "rating") filteredProducts = filteredProducts.sort((a, b) => b.rating - a.rating);
 
   return (
-    <div className="bg-slate-50 py-6 px-4 sm:px-6">
+    <div className="bg-slate-50 py-4 sm:py-6 px-3 sm:px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Page Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-2 animate-fadeUp">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-1 sm:mb-2 animate-fadeUp">
           Explore Courses
         </h1>
-        <p className="text-center text-slate-600 mb-6 animate-fadeUp">
+        <p className="text-center text-slate-600 mb-4 sm:mb-6 text-sm sm:text-base animate-fadeUp">
           Boost your career with top-rated courses.
         </p>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-3 bg-white p-4 rounded-xl shadow-sm mb-4 animate-fadeUp">
+        <div className="flex flex-col gap-2 sm:gap-3 bg-white p-3 sm:p-4 rounded-xl shadow-sm mb-4 animate-fadeUp">
           <input
             type="text"
             placeholder="Search courses..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full md:w-1/3 border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-400 transition"
+            className="w-full border border-slate-300 rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-blue-400 transition"
           />
 
-          <select
-            value={category}
-            onChange={e => setCategory(e.target.value)}
-            className="border border-slate-300 rounded-lg px-4 py-2 w-full md:w-auto focus:ring-2 focus:ring-blue-400 transition"
-          >
-            {categories.map((cat, index) => (
-              <option key={index} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            <select
+              value={category}
+              onChange={e => setCategory(e.target.value)}
+              className="border border-slate-300 rounded-lg px-2 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-blue-400 transition"
+            >
+              {categories.map((cat, index) => (
+                <option key={index} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
 
-          <select
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
-            className="border border-slate-300 rounded-lg px-4 py-2 w-full md:w-auto focus:ring-2 focus:ring-blue-400 transition"
-          >
-            <option value="">Sort</option>
-            <option value="price-low">Price: Low → High</option>
-            <option value="price-high">Price: High → Low</option>
-            <option value="rating">Rating</option>
-          </select>
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value)}
+              className="border border-slate-300 rounded-lg px-2 sm:px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-blue-400 transition"
+            >
+              <option value="">Sort</option>
+              <option value="price-low">Low → High</option>
+              <option value="price-high">High → Low</option>
+              <option value="rating">Rating</option>
+            </select>
+          </div>
         </div>
 
         {/* Showing Count */}
-        <p className="text-slate-700 mb-4 animate-fadeUp">
+        <p className="text-slate-700 mb-4 animate-fadeUp text-sm sm:text-base">
           Showing <strong>{filteredProducts.length}</strong> courses
         </p>
 
         {/* Courses Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 animate-fadeUp">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 animate-fadeUp">
           {filteredProducts.length > 0 ? (
             filteredProducts.map(product => (
               <ProductCard key={product.id} product={product} />

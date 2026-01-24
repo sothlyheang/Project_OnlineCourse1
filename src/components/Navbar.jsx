@@ -44,11 +44,11 @@ const Navbar = () => {
     }`;
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-900 text-white z-50 shadow-md h-24">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-6">
+    <nav className="fixed top-0 left-0 w-full bg-slate-900 text-white z-50 shadow-md h-20 sm:h-24">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-3 sm:px-6">
         {/* Logo */}
-        <NavLink to="/" className="font-bold text-2xl hover:scale-105 transition-transform duration-300">
-          ETEC ONLINE COURSE
+        <NavLink to="/" className="font-bold text-lg sm:text-2xl hover:scale-105 transition-transform duration-300 line-clamp-1">
+          LH Online Course
         </NavLink>
 
         {/* Desktop Links + Search */}

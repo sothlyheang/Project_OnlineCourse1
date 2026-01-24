@@ -15,23 +15,23 @@ const Category = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 py-4 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-6">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-slate-800 text-center">Explore Categories</h1>
-        <p className="text-center text-slate-600 max-w-2xl">
+    <div className="min-h-screen bg-slate-50 py-4 sm:py-6 px-3 sm:px-6">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 sm:gap-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 text-center">Explore Categories</h1>
+        <p className="text-center text-slate-600 max-w-2xl text-sm sm:text-base">
           Browse categories to find the perfect course for your skills and career growth.
         </p>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mt-10 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6 sm:mt-10 w-full">
           {categories.map((cat, index) => (
             <Link
               key={index}
               to={`/courses?category=${cat.name}`}
-              className="bg-white rounded-xl shadow-md p-8 flex flex-col items-center justify-center text-center hover:bg-blue-50 hover:shadow-xl transition transform hover:-translate-y-1"
+              className="bg-white rounded-xl shadow-md p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center text-center hover:bg-blue-50 hover:shadow-xl transition transform hover:-translate-y-1"
             >
-              <div className="text-blue-600 mb-4">{cat.icon}</div>
-              <h2 className="font-bold text-lg text-slate-700">{cat.name}</h2>
-              <p className="text-sm text-gray-500 mt-2">Explore top courses in {cat.name}</p>
+              <div className="text-blue-600 mb-3 sm:mb-4 text-2xl sm:text-3xl">{cat.icon}</div>
+              <h2 className="font-bold text-base sm:text-lg text-slate-700 line-clamp-2">{cat.name}</h2>
+              <p className="text-xs sm:text-sm text-gray-500 mt-2 line-clamp-2">Explore top courses</p>
             </Link>
           ))}
         </div>
