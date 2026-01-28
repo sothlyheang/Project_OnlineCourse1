@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Notification from "./Notification";
 
 const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartContext);
+  const [showNotification, setShowNotification] = useState(false);
 
   if (!product) return null;
 
   const addToCart = (e) => {
     e.stopPropagation();
     setCart([...cart, product]);
+    setShowNotification(true);
   };
 
   const renderStars = (rating) => {
@@ -32,7 +35,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="border rounded-lg sm:rounded-xl shadow-sm bg-white flex flex-col hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out h-full animate-fadeIn">
+    <>
+      {showNotification && <Notification message={`${product.title} added to Cart!`} />}
+      <div className="border rounded-lg sm:rounded-xl shadow-sm bg-white flex flex-col hover:shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out h-full animate-fadeIn">
       
       {/* Image & Title */}
       <Link to={`/courses/${product.id}`} className="cursor-pointer relative">
@@ -80,6 +85,7 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

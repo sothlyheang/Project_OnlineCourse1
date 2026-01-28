@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaCheckCircle } from "react-icons/fa";
+import Navbar from "../components/Navbar";
 
 const CartPage = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -13,81 +14,155 @@ const CartPage = () => {
     setCart(updated);
   };
 
+  // Clear cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
   // Calculate subtotal
   const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+
+  // Get unique items with count
+  const groupedItems = cart.reduce((acc, item) => {
+    const existingItem = acc.find((i) => i.id === item.id);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      acc.push({ ...item, quantity: 1 });
+    }
+    return acc;
+  }, []);
 
   if (cart.length === 0)
     return (
-      <div className="p-4 sm:p-10 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-2">Your cart is empty</h2>
-        <p className="text-sm sm:text-base text-gray-600 mb-4">
-          Looks like you haven't added any courses yet.
-        </p>
-        <Link
-          to="/courses"
-          className="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base"
-        >
-          Browse Courses
-        </Link>
+      <div className="min-h-screen bg-slate-50">
+        <Navbar />
+        <div className="p-4 sm:p-10 text-center mt-10">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-2">Your cart is empty</h2>
+          <p className="text-sm sm:text-base text-gray-600 mb-4">
+            Looks like you haven't added any courses yet.
+          </p>
+          <Link
+            to="/courses"
+            className="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base"
+          >
+            Browse Courses
+          </Link>
+        </div>
       </div>
     );
 
   return (
-    <div className="p-3 sm:p-4 max-w-7xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Your Cart</h2>
-
-      <div className="grid lg:grid-cols-3 gap-4 sm:gap-8">
-        {/* CART ITEMS */}
-        <div className="lg:col-span-2 space-y-3 sm:space-y-6">
-          {cart.map((item, index) => (
-            <div
-              key={index}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 bg-white rounded-xl shadow p-3 sm:p-4 hover:shadow-lg transition"
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full sm:w-32 h-40 sm:h-32 object-cover rounded-lg"
-              />
-
-              <div className="flex flex-col justify-between flex-1">
-                <div>
-                  <h3 className="text-base sm:text-xl font-semibold line-clamp-2">{item.title}</h3>
-                  <p className="text-gray-600 mt-1 text-sm sm:text-base">${item.price}</p>
-                </div>
-
-                <button
-                  onClick={() => removeItem(index)}
-                  className="flex items-center gap-2 text-red-600 hover:text-red-700 mt-2 text-sm sm:text-base w-fit"
-                >
-                  <FaTrash size={14} /> Remove
-                </button>
-              </div>
-            </div>
-          ))}
+    <div className="min-h-screen bg-slate-50">
+      <Navbar />
+      <div className="p-3 sm:p-6 max-w-7xl mx-auto">
+        <div className="flex justify-between items-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-4xl font-bold">Your Cart</h2>
+          <span className="bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-sm sm:text-base font-semibold">
+            {cart.length} item{cart.length !== 1 ? "s" : ""}
+          </span>
         </div>
 
-        {/* SUMMARY CARD */}
-        <div className="bg-white p-4 sm:p-6 rounded-xl shadow h-fit">
-          <h3 className="text-lg sm:text-xl font-bold mb-4">Order Summary</h3>
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-8">
+          {/* CART ITEMS */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              {/* Header */}
+              <div className="hidden sm:grid grid-cols-4 gap-4 bg-slate-100 p-4 font-semibold text-slate-700 text-sm">
+                <div className="col-span-2">Product</div>
+                <div>Price</div>
+                <div>Action</div>
+              </div>
 
-          <div className="flex justify-between text-base sm:text-lg">
-            <p>Subtotal</p>
-            <p className="font-semibold">${subtotal.toFixed(2)}</p>
+              {/* Items */}
+              <div className="divide-y">
+                {groupedItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-3 sm:p-4 hover:bg-slate-50 transition flex flex-col sm:grid sm:grid-cols-4 gap-3 sm:gap-4 items-start sm:items-center"
+                  >
+                    {/* Product Image & Title */}
+                    <div className="col-span-2 flex gap-3 sm:gap-4 w-full">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg shrink-0"
+                      />
+                      <div className="flex-1">
+                        <h3 className="text-sm sm:text-base font-semibold line-clamp-2">
+                          {item.title}
+                        </h3>
+                        {item.quantity > 1 && (
+                          <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                            Quantity: {item.quantity}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className="text-sm sm:text-base font-semibold text-slate-700">
+                      ${(item.price * item.quantity).toFixed(2)}
+                    </div>
+
+                    {/* Remove Button */}
+                    <button
+                      onClick={() => {
+                        const itemsToRemove = cart.filter((p) => p.id !== item.id);
+                        setCart(itemsToRemove);
+                      }}
+                      className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition text-sm w-full sm:w-fit justify-center sm:justify-start"
+                    >
+                      <FaTrash size={14} /> Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Clear Cart Button */}
+            <button
+              onClick={clearCart}
+              className="mt-4 w-full text-red-600 hover:text-red-700 hover:bg-red-50 px-4 py-2 rounded-lg transition text-sm font-semibold"
+            >
+              Clear All Items
+            </button>
           </div>
 
-          <hr className="my-4" />
+          {/* SUMMARY CARD */}
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg h-fit sticky top-4">
+            <h3 className="text-lg sm:text-xl font-bold mb-4">Order Summary</h3>
 
-          <button className="w-full bg-green-600 text-white py-2 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition text-sm sm:text-base">
-            Checkout
-          </button>
+            <div className="space-y-3 border-b pb-4">
+              <div className="flex justify-between text-sm sm:text-base">
+                <p className="text-gray-600">Subtotal</p>
+                <p className="font-semibold">${subtotal.toFixed(2)}</p>
+              </div>
+              <div className="flex justify-between text-sm sm:text-base">
+                <p className="text-gray-600">Tax (10%)</p>
+                <p className="font-semibold">${tax.toFixed(2)}</p>
+              </div>
+            </div>
 
-          <Link
-            to="/courses"
-            className="block text-center mt-3 text-blue-600 hover:underline text-sm sm:text-base"
-          >
-            Continue Shopping
-          </Link>
+            <div className="flex justify-between text-lg sm:text-xl font-bold mt-4 mb-4">
+              <p>Total</p>
+              <p className="text-green-600">${total.toFixed(2)}</p>
+            </div>
+
+            <button className="w-full bg-green-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition text-sm sm:text-base mb-3 flex items-center justify-center gap-2">
+              <FaCheckCircle size={16} />
+              Proceed to Checkout
+            </button>
+
+            <Link
+              to="/courses"
+              className="block text-center py-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition text-sm sm:text-base font-medium"
+            >
+              Continue Shopping
+            </Link>
+          </div>
         </div>
       </div>
     </div>

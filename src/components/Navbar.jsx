@@ -64,14 +64,14 @@ const Navbar = () => {
               placeholder="Search courses..."
               className="w-full h-10 rounded-3xl bg-white text-black pl-10"
             />
+            {/* suggestions dropdown */}
             {suggestions.length > 0 && (
               <ul className="absolute top-full left-0 right-0 bg-gray-700 rounded-b-xl shadow-lg z-50">
                 {suggestions.map(course => (
                   <li
                     key={course.id}
                     onClick={() => handleSuggestionClick(course.id)}
-                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer"
-                  >
+                    className="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                     {course.title}
                   </li>
                 ))}
@@ -112,7 +112,7 @@ const Navbar = () => {
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-700">
           <span className="font-bold text-xl">Menu</span>
-          <button onClick={() => setSidebarOpen(false)} className="text-2xl">×</button>
+          <button onClick={() => setSidebarOpen(false)} className="text-2xl">x</button>
         </div>
 
         <div className="flex flex-col mt-4 gap-3 px-4">
