@@ -66,10 +66,10 @@ const HomePage = () => {
         {/* HERO OVERLAY */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4 sm:px-6 max-w-3xl">
           <div className="bg-black/85 p-6 sm:p-8 rounded-xl">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-lg">
               Upgrade Your Skills Today
             </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-2 sm:mt-3 text-white opacity-90">
+            <p className="text-base sm:text-lg md:text-lg lg:text-xl mt-2 sm:mt-3 text-white opacity-90">
               Join thousands of learners mastering new tech skills with high-quality online courses.
             </p>
 

@@ -44,11 +44,10 @@ const CartPage = () => {
             <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-12 text-center border-2 border-slate-200">
               {/* Empty Cart Icon */}
               <div className="flex justify-center mb-6">
-                <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 sm:p-8 rounded-full">
+                <div className="bg-linear-to-br from-blue-100 to-blue-50 p-6 sm:p-8 rounded-full">
                   <FaShoppingCart size={60} className="text-blue-600" />
                 </div>
               </div>
-
               <hr className="my-6 border-slate-300" />
 
               <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-slate-800">Your Cart is Empty</h2>

@@ -47,14 +47,7 @@ const ProductCard = ({ product }) => {
           className="w-full h-24 sm:h-32 md:h-40 object-cover rounded-t-lg sm:rounded-t-xl"
         />
 
-        {/* Cart Icon Overlay - Mobile Only */}
-        <button
-          onClick={addToCart}
-          className="sm:hidden absolute bottom-1.5 right-1.5 bg-blue-600 text-white p-1.5 rounded-md hover:bg-blue-700 transition-transform duration-200 shadow-lg"
-          title="Add to Cart"
-        >
-          <FaShoppingCart size={14} />
-        </button>
+        {/* Cart Icon Overlay - Mobile Only - REMOVED */}
 
         <h2 className="font-bold text-xs sm:text-sm md:text-base mt-2 px-2 sm:px-3 line-clamp-2 transition-colors duration-300 hover:text-blue-600">
           {product.title}
@@ -75,10 +68,10 @@ const ProductCard = ({ product }) => {
           <span className="ml-1 text-gray-700 font-medium text-xs">{product.rating}</span>
         </div>
 
-        {/* Add to Cart - Desktop Only */}
+        {/* Add to Cart - All devices */}
         <button
           onClick={addToCart}
-          className="hidden sm:flex mt-2 sm:mt-3 mb-2 sm:mb-3 bg-blue-600 text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition-transform duration-200 items-center gap-1.5 sm:gap-2 justify-center"
+          className="flex mt-2 sm:mt-3 mb-2 sm:mb-3 bg-blue-600 text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-blue-700 hover:scale-105 transition-transform duration-200 items-center gap-1.5 sm:gap-2 justify-center"
         >
           <FaShoppingCart size={12} />
           Add to Cart
