@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
-const Notification = ({ message = "Added to Cart!", duration = 2000 }) => {
+const Notification = ({ message = "Added to Cart!", duration = 5000 }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {

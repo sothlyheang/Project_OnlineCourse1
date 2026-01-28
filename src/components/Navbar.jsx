@@ -85,13 +85,15 @@ const Navbar = () => {
           <NavLink to="/about" className={linkClass}>About Us</NavLink>
 
           {/* Cart */}
-          <NavLink to="/cart" className="relative">
-            <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
-            {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
-                {cart.length}
-              </span>
-            )}
+          <NavLink to="/cart" className="relative inline-block">
+            <div className="relative inline-block">
+              <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
+              {cart.length > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center -translate-y-2 translate-x-1">
+                  {cart.length}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
 
@@ -142,13 +144,15 @@ const Navbar = () => {
           <NavLink to="/courses" className={linkClass} onClick={() => setSidebarOpen(false)}>Courses</NavLink>
           <NavLink to="/category" className={linkClass} onClick={() => setSidebarOpen(false)}>Category</NavLink>
           <NavLink to="/about" className={linkClass} onClick={() => setSidebarOpen(false)}>About Us</NavLink>
-          <NavLink to="/cart" className="relative" onClick={() => setSidebarOpen(false)}>
-            <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
-            {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-1">
-                {cart.length}
-              </span>
-            )}
+          <NavLink to="/cart" className="relative inline-block" onClick={() => setSidebarOpen(false)}>
+            <div className="relative inline-block">
+              <img className="w-10 bg-white rounded-lg p-2 cursor-pointer" src={cartIcon} alt="Cart" />
+              {cart.length > 0 && (
+                <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center -translate-y-2 translate-x-1">
+                  {cart.length}
+                </span>
+              )}
+            </div>
           </NavLink>
         </div>
       </div>
