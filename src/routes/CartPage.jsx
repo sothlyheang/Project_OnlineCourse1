@@ -7,10 +7,9 @@ import Navbar from "../components/Navbar";
 const CartPage = () => {
   const { cart, setCart } = useContext(CartContext);
 
-  // Remove item
-  const removeItem = (index) => {
-    const updated = [...cart];
-    updated.splice(index, 1);
+  // Remove item (by id to remove all instances of that course)
+  const removeItem = (itemId) => {
+    const updated = cart.filter((item) => item.id !== itemId);
     setCart(updated);
   };
 
@@ -19,21 +18,15 @@ const CartPage = () => {
     setCart([]);
   };
 
-  // Calculate subtotal
-  const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+  // Get unique items (one course per id)
+  const uniqueItems = Array.from(
+    new Map(cart.map((item) => [item.id, item])).values()
+  );
+
+  // Calculate subtotal based on unique items
+  const subtotal = uniqueItems.reduce((sum, item) => sum + item.price, 0);
   const tax = subtotal * 0.1;
   const total = subtotal + tax;
-
-  // Get unique items with count
-  const groupedItems = cart.reduce((acc, item) => {
-    const existingItem = acc.find((i) => i.id === item.id);
-    if (existingItem) {
-      existingItem.quantity++;
-    } else {
-      acc.push({ ...item, quantity: 1 });
-    }
-    return acc;
-  }, []);
 
   if (cart.length === 0)
     return (
@@ -74,7 +67,7 @@ const CartPage = () => {
         <div className="flex justify-between items-center mb-6 sm:mb-8">
           <h2 className="text-2xl sm:text-4xl font-bold">Your Cart</h2>
           <span className="bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full text-sm sm:text-base font-semibold">
-            {cart.length} item{cart.length !== 1 ? "s" : ""}
+            {uniqueItems.length} item{uniqueItems.length !== 1 ? "s" : ""}
           </span>
         </div>
 
@@ -91,9 +84,9 @@ const CartPage = () => {
 
               {/* Items */}
               <div className="divide-y">
-                {groupedItems.map((item, index) => (
+                {uniqueItems.map((item) => (
                   <div
-                    key={index}
+                    key={item.id}
                     className="p-3 sm:p-4 hover:bg-slate-50 transition flex flex-col sm:grid sm:grid-cols-4 gap-3 sm:gap-4 items-start sm:items-center"
                   >
                     {/* Product Image & Title */}
@@ -107,25 +100,17 @@ const CartPage = () => {
                         <h3 className="text-sm sm:text-base font-semibold line-clamp-2">
                           {item.title}
                         </h3>
-                        {item.quantity > 1 && (
-                          <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                            Quantity: {item.quantity}
-                          </p>
-                        )}
                       </div>
                     </div>
 
                     {/* Price */}
                     <div className="text-sm sm:text-base font-semibold text-slate-700">
-                      ${(item.price * item.quantity).toFixed(2)}
+                      ${item.price.toFixed(2)}
                     </div>
 
                     {/* Remove Button */}
                     <button
-                      onClick={() => {
-                        const itemsToRemove = cart.filter((p) => p.id !== item.id);
-                        setCart(itemsToRemove);
-                      }}
+                      onClick={() => removeItem(item.id)}
                       className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition text-sm w-full sm:w-fit justify-center sm:justify-start"
                     >
                       <FaTrash size={14} /> Remove
