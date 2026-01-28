@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { FaTrash, FaCheckCircle } from "react-icons/fa";
+import { FaTrash, FaCheckCircle, FaShoppingCart } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 
 const CartPage = () => {
@@ -39,17 +39,31 @@ const CartPage = () => {
     return (
       <div className="min-h-screen bg-slate-50">
         <Navbar />
-        <div className="p-4 sm:p-10 text-center mt-10">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2">Your cart is empty</h2>
-          <p className="text-sm sm:text-base text-gray-600 mb-4">
-            Looks like you haven't added any courses yet.
-          </p>
-          <Link
-            to="/courses"
-            className="inline-block px-4 sm:px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base"
-          >
-            Browse Courses
-          </Link>
+        <div className="p-4 sm:p-10 flex items-center justify-center">
+          <div className="w-full max-w-md">
+            <div className="bg-white rounded-2xl shadow-lg p-8 sm:p-12 text-center border-2 border-slate-200">
+              {/* Empty Cart Icon */}
+              <div className="flex justify-center mb-6">
+                <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-6 sm:p-8 rounded-full">
+                  <FaShoppingCart size={60} className="text-blue-600" />
+                </div>
+              </div>
+
+              <hr className="my-6 border-slate-300" />
+
+              <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-slate-800">Your Cart is Empty</h2>
+              <p className="text-sm sm:text-base text-gray-600 mb-6">
+                Looks like you haven't added any courses yet. Start exploring and add some amazing courses to your cart!
+              </p>
+
+              <Link
+                to="/courses"
+                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base font-semibold shadow-md hover:shadow-lg"
+              >
+                Browse Courses
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     );
