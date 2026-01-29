@@ -54,7 +54,7 @@ const ProductCard = ({ product }) => {
     // Auto-confirm after 3 seconds
     const autoConfirmTimer = setTimeout(() => {
       confirmAdd();
-    }, 3000);
+    }, 20);
 
     // Store timeout ID for potential cancellation
     window.pendingAddTimer = autoConfirmTimer;
@@ -132,37 +132,37 @@ const ProductCard = ({ product }) => {
         {isAddingInProgress ? (
           <div className="flex mt-2 sm:mt-3 mb-2 sm:mb-3 gap-2 items-center justify-center">
             {/* Countdown Circle around Confirm */}
-            <button
+            {/* <button
               onClick={confirmAdd}
               className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
-            >
+            > */}
               {/* Animated Ring */}
-              <div
+              {/* <div
                 className="absolute inset-0 rounded-full border-4 border-transparent border-t-green-500 border-r-green-500 transition-all duration-300"
                 style={{
                   borderTopColor: `rgb(34, 197, 94)`,
                   borderRightColor: `rgb(34, 197, 94)`,
                   opacity: countdown / 3,
                 }}
-              />
-              <div className="bg-green-500 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center font-bold text-xs sm:text-sm">
+              /> */}
+              {/* <div className="bg-green-500 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center font-bold text-xs sm:text-sm">
                 {countdown}
               </div>
-            </button>
+            </button> */}
 
             {/* Cancel Button */}
-            <button
+            {/* <button
               onClick={cancelAdd}
               className="bg-red-500 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-1 text-xs sm:text-sm"
             >
               <FaTimes size={12} />
               Cancel
-            </button>
+            </button> */}
           </div>
         ) : isInCart ? (
           <Link
             to="/cart"
-            className="flex mt-2 sm:mt-3 mb-2 sm:mb-3 bg-green-600 text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-green-700 hover:scale-105 transition-transform duration-200 items-center gap-1.5 sm:gap-2 justify-center"
+            className="flex mt-2 sm:mt-3 mb-2 sm:mb-3 bg-blue-600 text-white text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-green-700 hover:scale-105 transition-transform duration-200 items-center gap-1.5 sm:gap-2 justify-center"
           >
             <FaCheck size={12} />
             Go to Cart
