@@ -146,11 +146,11 @@ const CartPage = () => {
 
             <div className="flex justify-between text-lg sm:text-xl font-bold mt-4 mb-4">
               <p>Total</p>
-              <p className="text-green-600">${total.toFixed(2)}</p>
+              <p className="text-red-600">${total.toFixed(2)}</p>
             </div>
 
-            <button className="w-full bg-green-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-green-700 transition text-sm sm:text-base mb-3 flex items-center justify-center gap-2">
-              <FaCheckCircle size={16} />
+            <button className="w-full bg-blue-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-sm sm:text-base mb-3 flex items-center justify-center gap-2">
+              <FaCheckCircle size={25} />
               Proceed to Checkout
             </button>
 
