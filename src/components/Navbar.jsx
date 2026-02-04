@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-3 sm:px-6">
         {/* Logo */}
         <NavLink to="/" className="font-bold text-lg sm:text-2xl hover:scale-105 transition-transform duration-300 line-clamp-1">
-          LH Online Course
+          BIU Online Course
         </NavLink>
 
         {/* Desktop Links + Search */}
