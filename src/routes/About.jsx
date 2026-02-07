@@ -13,30 +13,58 @@ const About = () => {
           </p>
         </div>
 
-        {/* Mission / Vision */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          <div className="flex flex-col items-center bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
-            <FaUsers size={30} className="text-blue-600 mb-3 sm:mb-4 sm:size-40" />
-            <h3 className="text-lg sm:text-xl font-bold mb-2">Our Community</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Join a global community of passionate learners and professionals sharing knowledge and growth.
-            </p>
-          </div>
+        {/* Our Team */}
+        <div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Meet Our Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {/* Team Member 1 */}
+            <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-blue-400 to-blue-600 rounded-full mb-4 flex items-center justify-center">
+                {/* <FaUsers size={50} className="text-white" /> */}
+                <img className='rounded-2xl' src="/src/assets/PF.jpg" alt="heang" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Soth Lyheang</h3>
+              <p className="text-blue-600 font-semibold text-sm sm:text-base mb-3">Team Lead & Founder</p>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
+                Leading the vision and strategy of the platform. Experienced in building scalable solutions and mentoring teams.
+              </p>
+            </div>
 
-          <div className="flex flex-col items-center bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
-            <FaLaptopCode size={30} className="text-blue-600 mb-3 sm:mb-4 sm:size-40" />
-            <h3 className="text-lg sm:text-xl font-bold mb-2">Expert Instructors</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Learn from industry experts with real-world experience and hands-on guidance.
-            </p>
-          </div>
+            {/* Team Member 2 */}
+            <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-green-400 to-green-600 rounded-full mb-4 flex items-center justify-center">
+                <FaLaptopCode size={50} className="text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
+              <p className="text-green-600 font-semibold text-sm sm:text-base mb-3">Tester</p>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
+                Building robust backend and frontend solutions. Passionate about clean code and efficient architecture.
+              </p>
+            </div>
 
-          <div className="flex flex-col items-center bg-white p-4 sm:p-6 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
-            <FaGraduationCap size={30} className="text-blue-600 mb-3 sm:mb-4 sm:size-40" />
-            <h3 className="text-lg sm:text-xl font-bold mb-2">Career-Focused Learning</h3>
-            <p className="text-gray-600 text-center text-sm sm:text-base">
-              Acquire skills that matter and boost your career opportunities with practical, project-based courses.
-            </p>
+            {/* Team Member 3 */}
+            <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-purple-400 to-purple-600 rounded-full mb-4 flex items-center justify-center">
+                <FaGraduationCap size={50} className="text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
+              <p className="text-purple-600 font-semibold text-sm sm:text-base mb-3"> Instructor</p>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
+                Designing engaging course content and ensuring quality education. Expert in explaining complex concepts.
+              </p>
+            </div>
+
+            {/* Team Member 4 */}
+            <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-orange-400 to-orange-600 rounded-full mb-4 flex items-center justify-center">
+                <FaUsers size={50} className="text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
+              <p className="text-orange-600 font-semibold text-sm sm:text-base mb-3">UI/UX Designer</p>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
+                Creating beautiful and intuitive user interfaces. Focused on user experience and design excellence.
+              </p>
+            </div>
           </div>
         </div>
 
