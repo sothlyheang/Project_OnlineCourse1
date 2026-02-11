@@ -13,7 +13,6 @@ import Courses from './routes/Courses';
 import ProductDetails from "./pages/ProductDetails";
 import CartPage from './routes/CartPage';
 import Login from './routes/Login';
-import Signup from './routes/Signup';
 
 const App = () => {
   return (
@@ -29,7 +28,6 @@ const App = () => {
             <Route path="/courses/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
           </Routes>
           <Footer />
         </div>

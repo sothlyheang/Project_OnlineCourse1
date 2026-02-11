@@ -107,9 +107,11 @@ const Navbar = () => {
           {/* Auth Buttons */}
           {user ? (
             <div className="flex items-center gap-3">
-              <span className="text-sm bg-blue-600 px-3 py-1 rounded-full">
-                {user.name}
-              </span>
+              <div className={`text-sm px-4 py-2 rounded-full font-bold text-white uppercase tracking-wider ${
+                user.role === 'admin' ? 'bg-red-600' : 'bg-blue-600'
+              }`}>
+                {user.role}
+              </div>
               <button
                 onClick={handleLogout}
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
@@ -118,20 +120,12 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div className="flex gap-2">
-              <NavLink
-                to="/login"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
-              >
-                Login
-              </NavLink>
-              <NavLink
-                to="/signup"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
-              >
-                Sign Up
-              </NavLink>
-            </div>
+            <NavLink
+              to="/login"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+            >
+              Login
+            </NavLink>
           )}
         </div>
 
@@ -196,9 +190,11 @@ const Navbar = () => {
           {/* Mobile Auth Buttons */}
           {user ? (
             <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-700">
-              <p className="text-sm bg-blue-600 px-3 py-2 rounded text-center font-semibold">
-                Welcome, {user.name}
-              </p>
+              <div className={`text-sm px-3 py-3 rounded-lg font-bold text-white uppercase tracking-wider text-center ${
+                user.role === 'admin' ? 'bg-red-600' : 'bg-blue-600'
+              }`}>
+                {user.role}
+              </div>
               <button
                 onClick={handleLogout}
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors w-full"
@@ -214,13 +210,6 @@ const Navbar = () => {
                 onClick={() => setSidebarOpen(false)}
               >
                 Login
-              </NavLink>
-              <NavLink
-                to="/signup"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center"
-                onClick={() => setSidebarOpen(false)}
-              >
-                Sign Up
               </NavLink>
             </div>
           )}

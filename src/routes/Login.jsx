@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 const Login = () => {
@@ -10,13 +10,13 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      await login(email, password);
+      login(email, password);
       navigate('/');
     } catch (err) {
       setError(err.message);
@@ -50,7 +50,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              placeholder="you@example.com"
+              placeholder="admin123@gmail.com"
             />
           </div>
 
@@ -78,13 +78,10 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/signup" className="text-blue-600 hover:text-blue-700 font-semibold">
-              Sign up
-            </Link>
-          </p>
+        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm text-blue-700">
+          <p className="font-semibold mb-2">Demo Credentials:</p>
+          <p className="mb-1">Admin: admin123@gmail.com / admin168</p>
+          <p>Staff: staff123@gmail.com / staff1234</p>
         </div>
       </div>
     </div>

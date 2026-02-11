@@ -2,79 +2,74 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
+// Hardcoded users database
+const USERS = {
+  admin: {
+    name: 'Heang',
+    email: 'admin123@gmail.com',
+    password: 'admin168',
+    role: 'admin'
+  },
+  staff: [
+    { name: 'Rom', email: 'staff123@gmail.com', password: 'staff1234', role: 'staff' },
+    { name: 'Nisa', email: 'staff123@gmail.com', password: 'staff1234', role: 'staff' },
+    { name: 'Laiheang', email: 'staff123@gmail.com', password: 'staff1234', role: 'staff' }
+  ]
+};
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Check if user is logged in on mount
   useEffect(() => {
-    const token = localStorage.getItem('token');
     const userData = localStorage.getItem('user');
-    if (token && userData) {
+    if (userData) {
       setUser(JSON.parse(userData));
     }
     setLoading(false);
   }, []);
 
-  const login = async (email, password) => {
-    try {
-      setError(null);
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || 'Login failed');
-      }
-
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      setUser(data.user);
-      return data;
-    } catch (err) {
-      setError(err.message);
-      throw err;
+  const login = (email, password) => {
+    setError(null);
+    
+    if (email === USERS.admin.email && password === USERS.admin.password) {
+      const userData = {
+        id: 'admin',
+        name: USERS.admin.name,
+        email: USERS.admin.email,
+        role: 'admin'
+      };
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+      return userData;
     }
-  };
 
-  const signup = async (userData) => {
-    try {
-      setError(null);
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || 'Signup failed');
-      }
-
-      const data = await response.json();
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      setUser(data.user);
-      return data;
-    } catch (err) {
-      setError(err.message);
-      throw err;
+    const staffUser = USERS.staff.find(u => u.email === email && u.password === password);
+    if (staffUser) {
+      const userData = {
+        id: `staff_${staffUser.name}`,
+        name: staffUser.name,
+        email: staffUser.email,
+        role: 'staff'
+      };
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+      return userData;
     }
+
+    const error = 'Invalid email or password';
+    setError(error);
+    throw new Error(error);
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, loading, error, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
