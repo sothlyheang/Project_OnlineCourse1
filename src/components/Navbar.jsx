@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/CartContext';
+import { AuthContext } from '../context/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import products from '../data/product';
 import searchIcon from '../assets/search.svg';
@@ -7,6 +8,7 @@ import cartIcon from '../assets/cart.svg';
 
 const Navbar = () => {
   const { cart } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,6 +36,12 @@ const Navbar = () => {
       setSuggestions([]);
       setSidebarOpen(false);
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+    setSidebarOpen(false);
   };
 
   const linkClass = ({ isActive }) =>
@@ -95,6 +103,36 @@ const Navbar = () => {
               )}
             </div>
           </NavLink>
+
+          {/* Auth Buttons */}
+          {user ? (
+            <div className="flex items-center gap-3">
+              <span className="text-sm bg-blue-600 px-3 py-1 rounded-full">
+                {user.name}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <NavLink
+                to="/login"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Sign Up
+              </NavLink>
+            </div>
+          )}
         </div>
 
         {/* Hamburger */}
@@ -154,6 +192,38 @@ const Navbar = () => {
               )}
             </div>
           </NavLink>
+
+          {/* Mobile Auth Buttons */}
+          {user ? (
+            <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-700">
+              <p className="text-sm bg-blue-600 px-3 py-2 rounded text-center font-semibold">
+                Welcome, {user.name}
+              </p>
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors w-full"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-gray-700">
+              <NavLink
+                to="/login"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center"
+                onClick={() => setSidebarOpen(false)}
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center"
+                onClick={() => setSidebarOpen(false)}
+              >
+                Sign Up
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
 

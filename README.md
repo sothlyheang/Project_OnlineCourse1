@@ -1,16 +1,72 @@
-# React + Vite
+# BIU Online Course Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack online course platform built with React, Node.js, Express, and MongoDB.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ✅ Authentication System
+- User Registration (Sign Up)
+- User Login
+- Logout functionality
+- JWT token-based authentication
+- Password encryption with bcryptjs
+- Session persistence with localStorage
 
-## React Compiler
+### 📚 Course Features
+- Browse courses
+- View course details
+- Search functionality
+- Shopping cart system
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+**Frontend:**
+- React 19.2
+- Vite
+- React Router
+- TailwindCSS
+- React Icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Backend:**
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- Bcryptjs for password hashing
+
+## Quick Start
+
+### Prerequisites
+- Node.js (v16+)
+- MongoDB (local or Atlas cloud)
+
+### Frontend Setup
+```bash
+npm install
+npm run dev
+```
+Runs on: `http://localhost:5173`
+
+### Backend Setup
+```bash
+cd backend
+npm install
+npm run dev
+```
+Runs on: `http://localhost:5000`
+
+## Detailed Setup Guide
+
+See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for complete setup instructions including MongoDB configuration.
+
+## Available Scripts
+
+### Frontend
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Backend
+- `npm run dev` - Start development server with hot reload
+- `npm start` - Start production server
