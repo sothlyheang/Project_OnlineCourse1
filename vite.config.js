@@ -8,5 +8,9 @@ export default defineConfig({
   appType: 'spa',
   server: {
     middlewareMode: false,
+    host: true,
+  },
+  preview: {
+    host: true,
   },
 })
