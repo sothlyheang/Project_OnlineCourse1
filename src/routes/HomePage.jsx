@@ -25,11 +25,11 @@ const HomePage = () => {
   const Arrow = ({ direction = "left", onClick }) => (
     <button
       onClick={onClick}
-      className={`absolute top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full p-2 hover:bg-black/60 transition duration-300 ${
+      className={`absolute top-1/2 -translate-y-1/2 bg-blue-600/60 hover:bg-blue-700/80 text-white rounded-full p-3 transition-all duration-300 z-10 hover:scale-110 ${
         direction === "left" ? "left-2 sm:left-5" : "right-2 sm:right-5"
       }`}
     >
-      {direction === "left" ? "<" : ">"}
+      {direction === "left" ? "❮" : "❯"}
     </button>
   );
 
@@ -54,7 +54,7 @@ const HomePage = () => {
             <img
               key={i}
               src={src}
-              className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[620px] object-cover shrink-0"
+              className="w-full h-[250px] sm:h-[400px] md:h-[500px] lg:h-[620px] object-cover shrink-0 brightness-75"
               alt={`Slide ${i + 1}`}
             />
           ))}
@@ -63,20 +63,33 @@ const HomePage = () => {
         <Arrow direction="left" onClick={prevSlide} />
         <Arrow direction="right" onClick={nextSlide} />
 
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                i === current ? 'bg-yellow-400 w-6' : 'bg-white/50 w-2 hover:bg-white/70'
+              }`}
+            />
+          ))}
+        </div>
+
         {/* HERO OVERLAY */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4 sm:px-6 max-w-xl w-full">
-          <div className="bg-black/85 p-4 sm:p-8 rounded-xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-lg">
+          <div className="bg-linear-to-br from-black/90 to-blue-900/70 p-4 sm:p-8 rounded-xl backdrop-blur-sm border border-blue-400/30 animate-slideDown">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-yellow-300 via-yellow-400 to-orange-400 drop-shadow-lg animate-slideUp">
               Upgrade Your Skills Today
             </h1>
-            <p className="text-base sm:text-lg md:text-lg lg:text-xl mt-2 sm:mt-3 text-white opacity-90">
+            <p className="text-base sm:text-lg md:text-lg lg:text-xl mt-2 sm:mt-3 text-cyan-100 opacity-90 animate-fadeIn">
               Join thousands of learners mastering new tech skills with high-quality online courses.
             </p>
 
-            <div className="mt-3 sm:mt-4">
+            <div className="mt-3 sm:mt-4 animate-bounce-slow">
               <Link
                 to="/courses"
-                className="bg-yellow-400 text-gray-900 px-5 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-lg font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
+                className="inline-block bg-linear-to-r from-yellow-400 to-orange-400 hover:from-yellow-300 hover:to-orange-300 text-gray-900 px-5 sm:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-lg font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Browse Courses →
               </Link>
@@ -113,9 +126,9 @@ const HomePage = () => {
         <hr className="pb-4" />
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-        {products.slice(0, 12).map((product) => (
-        <ProductCard key={product.id} product={product} />
-        ))}
+          {products.slice(0, 12).map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
 

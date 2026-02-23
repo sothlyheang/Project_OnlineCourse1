@@ -12,7 +12,7 @@ const About = () => {
             We are dedicated to helping thousands of learners worldwide achieve their goals through high-quality online courses.
           </p>
         </div>
-
+        <hr className='container-fluid' />
         {/* Our Team */}
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Meet Our Team</h2>
@@ -20,10 +20,9 @@ const About = () => {
             {/* Team Member 1 */}
             <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
               <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-blue-400 to-blue-600 rounded-full mb-4 flex items-center justify-center">
-                {/* <FaUsers size={50} className="text-white" /> */}
-                <img className='rounded-2xl' src="/src/assets/PF.jpg" alt="heang" />
+                <img className='rounded-2xl' src="https://i.postimg.cc/bDP2kbSf/PF.jpg" alt="heang" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Soth Lyheang</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center pt-2">Soth Lyheang</h3>
               <p className="text-blue-600 font-semibold text-sm sm:text-base mb-3">Team Lead & Founder</p>
               <p className="text-gray-600 text-center text-sm sm:text-base">
                 Leading the vision and strategy of the platform. Experienced in building scalable solutions and mentoring teams.
@@ -33,10 +32,10 @@ const About = () => {
             {/* Team Member 2 */}
             <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
               <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-green-400 to-green-600 rounded-full mb-4 flex items-center justify-center">
-                <FaLaptopCode size={50} className="text-white" />
+                <img className='rounded-2xl' src="https://i.postimg.cc/47GhVt70/Laiheang-PF.jpg" alt="laiheang" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
-              <p className="text-green-600 font-semibold text-sm sm:text-base mb-3">Tester</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Neak Senglaiheang</h3>
+              <p className="text-green-600 font-semibold text-sm sm:text-base mb-3">Instructor</p>
               <p className="text-gray-600 text-center text-sm sm:text-base">
                 Building robust backend and frontend solutions. Passionate about clean code and efficient architecture.
               </p>
@@ -45,10 +44,10 @@ const About = () => {
             {/* Team Member 3 */}
             <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
               <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-purple-400 to-purple-600 rounded-full mb-4 flex items-center justify-center">
-                <FaGraduationCap size={50} className="text-white" />
+                <img className='rounded-2xl h-40' src="https://i.postimg.cc/NM97hkgM/Rom-PF.jpg" alt="sokphearom" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
-              <p className="text-purple-600 font-semibold text-sm sm:text-base mb-3"> Instructor</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center pt-2">Sen Sokphearom</h3>
+              <p className="text-purple-600 font-semibold text-sm sm:text-base mb-3"> Tester</p>
               <p className="text-gray-600 text-center text-sm sm:text-base">
                 Designing engaging course content and ensuring quality education. Expert in explaining complex concepts.
               </p>
@@ -57,10 +56,10 @@ const About = () => {
             {/* Team Member 4 */}
             <div className="flex flex-col items-center bg-white p-6 sm:p-8 rounded-lg sm:rounded-xl shadow hover:shadow-lg transition">
               <div className="w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-orange-400 to-orange-600 rounded-full mb-4 flex items-center justify-center">
-                <FaUsers size={50} className="text-white" />
+                <img className='rounded-2xl' src="https://i.postimg.cc/50YqcSxt/Sa-PF.jpg" alt="nisa" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center">Teammate Name</h3>
-              <p className="text-orange-600 font-semibold text-sm sm:text-base mb-3">UI/UX Designer</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-center pt-2">Sorn Nisa</h3>
+              <p className="text-orange-600 font-semibold text-sm sm:text-base mb-3 ">UI/UX Designer</p>
               <p className="text-gray-600 text-center text-sm sm:text-base">
                 Creating beautiful and intuitive user interfaces. Focused on user experience and design excellence.
               </p>

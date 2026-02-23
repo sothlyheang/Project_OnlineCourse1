@@ -131,33 +131,6 @@ const ProductCard = ({ product }) => {
         {/* Add to Cart or Go to Cart Button */}
         {isAddingInProgress ? (
           <div className="flex mt-2 sm:mt-3 mb-2 sm:mb-3 gap-2 items-center justify-center">
-            {/* Countdown Circle around Confirm */}
-            {/* <button
-              onClick={confirmAdd}
-              className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
-            > */}
-              {/* Animated Ring */}
-              {/* <div
-                className="absolute inset-0 rounded-full border-4 border-transparent border-t-green-500 border-r-green-500 transition-all duration-300"
-                style={{
-                  borderTopColor: `rgb(34, 197, 94)`,
-                  borderRightColor: `rgb(34, 197, 94)`,
-                  opacity: countdown / 3,
-                }}
-              /> */}
-              {/* <div className="bg-green-500 text-white rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center font-bold text-xs sm:text-sm">
-                {countdown}
-              </div>
-            </button> */}
-
-            {/* Cancel Button */}
-            {/* <button
-              onClick={cancelAdd}
-              className="bg-red-500 text-white px-2 sm:px-3 py-1.5 sm:py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-1 text-xs sm:text-sm"
-            >
-              <FaTimes size={12} />
-              Cancel
-            </button> */}
           </div>
         ) : isInCart ? (
           <Link
