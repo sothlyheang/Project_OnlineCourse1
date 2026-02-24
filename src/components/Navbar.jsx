@@ -52,7 +52,7 @@ const Navbar = () => {
         </NavLink>
 
         {/* Desktop Links + Search */}
-        <div className="hidden md:flex items-center gap-4 flex-1 justify-end">
+        <div className="hidden lg:flex items-center gap-4 flex-1 justify-end">
           {/* Search */}
           <div className="relative flex-1 max-w-[500px]">
             <img src={searchIcon} alt="Search" className="absolute left-3 top-3 w-5"/>
@@ -99,7 +99,7 @@ const Navbar = () => {
 
         {/* Hamburger */}
         <button
-          className="md:hidden text-white text-2xl hover:scale-110 transition-transform duration-200"
+          className="lg:hidden text-white text-2xl hover:scale-110 transition-transform duration-200"
           onClick={() => setSidebarOpen(true)}
         >
           ☰
